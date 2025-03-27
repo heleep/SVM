@@ -2,87 +2,163 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sarvajanik University Navbar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVM Institute of Technology</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav class="navbar">
     <div class="container">
-
-      <div class="navbar-brand">
-        <a href="index.html">SVM</a>
-      </div>
-      
-      <ul class="navbar-menu">
-        <li><a href="#">Student Login</a></li>
-        
-        <li class="dropdown">
-          <a href="#">Colleges</a>
-          <ul class="dropdown-menu">
-            <li><a href="https://svmit.ac.in/">SVMIT</a></li>
-            <li><a href="https://www.mkccollege.ac.in/">MK College</a></li>
-            <li><a href="https://svmschool.info/">SVM School</a></li>
-          </ul>
-        </li>
-
-        <li class="dropdown">
-          <a href="#">Admissions</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Admission Process</a></li>
-            <li><a href="#">Scholarships</a></li>
-            <li><a href="http://student.sarvajanikuniversity.ac.in:8080">Student Registration</a></li>
-          </ul>
-        </li>
-    
-        <li><a href="#">Peoples</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-      <div class="navbar-contact">
-        <span>+91 1111111111, +91 2222222222</span>
-        <br>
-        <span>admin@gmail.com</span>
+      <div class="nav-content">
+        <div class="logo">
+          <img src="assets/images/logo.jpg" alt="SVM Logo">
+          <span>SVM Institute of Technology</span>
+        </div>
+        <div class="nav-links">
+          <a href="#" class="nav-link">Home</a>
+          <a href="#" class="nav-link">About</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Academics</a>
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Undergraduate Programs</a>
+              <a href="#" class="dropdown-item">Graduate Programs</a>
+              <a href="#" class="dropdown-item">Online Learning</a>
+              <a href="#" class="dropdown-item">Short Courses</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Research</a>
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Research Centers</a>
+              <a href="#" class="dropdown-item">Publications</a>
+              <a href="#" class="dropdown-item">Collaborations</a>
+              <a href="#" class="dropdown-item">Innovation Labs</a>
+            </div>
+          </div>
+          <a href="#" class="nav-link">Admissions</a>
+          <a href="#" class="nav-link">College</a>
+        </div>
       </div>
     </div>
   </nav>
 
-   <!-- Slider Section -->
-   <div class="slider">
-    <img id="slider-img" src="assets/images/1.jpg" alt="Slider Image">
+  <div class="slider">
+    <div class="slides">
+      <!-- Slides will be inserted by JavaScript -->
+    </div>
   </div>
 
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-contact">
-        <h3>Contact Us</h3>
-        <p>SVMIT Bharuch </p>
-        <p>Email: admin@sarvajanikuniversity.ac.in</p>
-        <p>Phone: +91 1111111111, +91 2222222222</p>
-      </div>
-      <div class="footer-links">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Admissions</a></li>
-          <li><a href="#">Colleges</a></li>
-          <li><a href="#">Research</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-social">
-        <h3>Follow Us</h3>
-        <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">LinkedIn</a></li>
-        </ul>
+  <div class="features">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="lucide lucide-book-open"></i>
+          <h3>World-Class Education</h3>
+          <p>Experience learning from industry experts and renowned academicians in state-of-the-art facilities.</p>
+        </div>
+        <div class="feature-card">
+          <i class="lucide lucide-users"></i>
+          <h3>Diverse Community</h3>
+          <p>Join a vibrant community of learners from across the globe, sharing knowledge and cultures.</p>
+        </div>
+        <div class="feature-card">
+          <i class="lucide lucide-building-2"></i>
+          <h3>Modern Campus</h3>
+          <p>Study in our modern campus equipped with cutting-edge technology and research facilities.</p>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>2025 SVMIT.</p>
+  </div>
+
+  <!-- Enhanced About Section -->
+  <section class="about">
+    <div class="container">
+      <h2>About SVM Institute of Technology</h2>
+      <p>
+        At SVM Institute of Technology, we pride ourselves on fostering innovation, critical thinking, and academic excellence. Our curriculum challenges and inspires students to become leaders in their fields.
+      </p>
+      <p>
+        With state-of-the-art laboratories, innovative teaching methods, and extensive industry collaborations, we provide a dynamic learning environment designed for the future.
+      </p>
+      <ul>
+        <li>Innovative teaching methods</li>
+        <li>World-class research facilities</li>
+        <li>Global industry collaborations</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Enhanced Programs Section -->
+  <section class="programs">
+    <div class="container">
+      <h2>Our Programs</h2>
+      <div class="programs-grid">
+        <div class="program-card">
+          <h3>B.Tech</h3>
+          <p>Dive into various engineering disciplines with advanced labs, project-based learning, and industry internships.</p>
+          <ul>
+            <li>Computer Science</li>
+            <li>Electronics</li>
+            <li>Mechanical Engineering</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <h3>M.Tech</h3>
+          <p>Enhance your technical skills and research capabilities in specialized fields of engineering and technology.</p>
+          <ul>
+            <li>Advanced Computing</li>
+            <li>Robotics</li>
+            <li>Data Science</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <h3>MBA</h3>
+          <p>Develop leadership and strategic management skills with a curriculum designed for future business leaders.</p>
+          <ul>
+            <li>Marketing & Finance</li>
+            <li>Operations Management</li>
+            <li>Entrepreneurship</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Admissions</a></li>
+            <li><a href="#">Academic Programs</a></li>
+            <li><a href="#">Research</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Library</a></li>
+            <li><a href="#">Student Portal</a></li>
+            <li><a href="#">Career Services</a></li>
+            <li><a href="#">Campus Life</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect With Us</h4>
+          <p>Stay updated with our newsletter</p>
+          <div class="newsletter">
+            <input type="email" placeholder="Enter your email">
+            <button>Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SVM Institute of Technology. All rights reserved.</p>
+      </div>
     </div>
   </footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
