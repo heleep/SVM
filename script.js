@@ -1,7 +1,7 @@
 // Slider functionality
 const slides = [
   {
-    image: 'https://th.bing.com/th/id/R.c86c821937bda92fa98077300c7ad9df?rik=ovij1xNdcVtZAA&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f0%2fa%2ff%2f1401863-new-hogwarts-wallpapers-1920x1080-macbook.jpg&ehk=QBmW3NahlNpI%2fTW%2bDqW1hE8GAxnkJLTKCsUArQQS%2fRc%3d&risl=&pid=ImgRaw&r=0',
+    image: 'https://hd.wallpaperswide.com/thumbs/most_beautiful_mountain_scenery-t2.jpg',
     title: 'Welcome to SVM Institute of Technology',
     description: 'Empowering future innovators with excellence in education.'
   },
