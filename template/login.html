@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - SVM Institute</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <!-- Same navbar as index.html -->
+    <div class="container">
+      <div class="nav-content">
+        <div class="logo">
+          <img src="../assets/images/logo.jpg" alt="SVM Logo">
+          <span>SVM Institute of Technology</span>
+        </div>
+        <div class="nav-links">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="login.html" class="nav-link">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
+  <section class="about" style="min-height: 70vh;">
+    <div class="container">
+      <h2>Login to Your Account</h2>
+      <form id="loginForm" class="auth-form" action="../template/login.php" method="POST">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="auth-btn">Login</button>
+      </form>
+      <p style="margin-top: 1rem;">Don't have an account? <a href="register.html">Register here</a></p>
+    </div>
+  </section>
+
+  
+</body>
+</html>

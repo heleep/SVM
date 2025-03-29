@@ -81,4 +81,25 @@ featureCards.forEach(card => {
 });
 
 // Initialize Lucide icons
-lucide.createIcons();
+// lucide.createIcons();
+
+// Fetch events from the database and display them in the event section
+fetch('template/get_events.php')
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById('eventContainer');
+    if(data.length === 0) {
+      container.innerHTML = "<p>No events available at the moment.</p>";
+      return;
+    }
+    data.forEach(eventItem => {
+      const eventCard = document.createElement('div');
+      eventCard.className = 'event-card';
+      eventCard.innerHTML = `
+        <h3>${eventItem.SVM_Event}</h3>
+        <p>${eventItem.Event_date}</p>
+      `;
+      container.appendChild(eventCard);
+    });
+  })
+  .catch(error => console.error('Error fetching events:', error));
