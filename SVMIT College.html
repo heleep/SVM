@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JP College of Arts - SVM Institute of Technology</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style1.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #3498db;
+    }
+    
+    /* About College Section */
+    .about-college {
+      padding: 80px 0;
+      background-color: #f9f9f9;
+    }
+    
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+    }
+    
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .about-text h3 {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+    
+    .about-text p {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .about-image img:hover {
+      transform: scale(1.03);
+    }
+    
+    /* Placements Section */
+    .placements-section {
+      padding: 80px 0;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://svmit.ac.in/Content/Client/staticimage/Hostel-Facility.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+    }
+    
+    .placements-container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .placement-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .placement-card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+    
+    .placement-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+    
+    .placement-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      margin: -90px auto 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .placement-info {
+      padding: 0 20px;
+    }
+    
+    .placement-info h3 {
+      color: #2c3e50;
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+    }
+    
+    .placement-info p.company {
+      color: #e74c3c;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    
+    .placement-info p.package {
+      color: #27ae60;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .placement-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+      min-width: 150px;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #3498db;
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    @media (max-width: 768px) {
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .placement-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-content">
+        <div class="logo">
+          <img src="assets/images/logo.jpg" alt="SVM Logo">
+          <span>SVM Institute of Technology</span>
+        </div>
+        
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="About.html" class="nav-link">About</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Academics</a>
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Undergraduate Programs</a>
+              <a href="#" class="dropdown-item">Graduate Programs</a>
+              <a href="#" class="dropdown-item">Online Learning</a>
+              <a href="#" class="dropdown-item">Short Courses</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Research</a>
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Research Centers</a>
+              <a href="#" class="dropdown-item">Publications</a>
+              <a href="#" class="dropdown-item">Collaborations</a>
+              <a href="#" class="dropdown-item">Innovation Labs</a>
+            </div>
+          </div>
+          <a href="#" class="nav-link">Admissions</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link">College</a>
+            <div class="dropdown-content">
+              <a href="JP College of Arts.html" class="dropdown-item active">JP College of Arts</a>
+              <a href="JP College of Science.html" class="dropdown-item">JP College of Science</a>
+              <a href="#" class="dropdown-item">SVMIT College</a>
+              <a href="#" class="dropdown-item">MK College of commerce</a>
+              <a href="#" class="dropdown-item">MK College of Arts</a>
+              <div class="submenu">
+                <a href="#">School</a>
+                <div class="submenu-content">
+                    <a href="#">SVM School</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="slider">
+    <div class="slides">
+      <!-- Slides will be inserted by JavaScript -->
+    </div>
+  </div>
+
+  <!-- About SVMIT College Section -->
+  <section class="about-college">
+    <div class="container">
+      <div class="section-header">
+        <h2>About SVMIT College</h2>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Excellence in Technical Education Since 1995</h3>
+          <p>SVM Institute of Technology (SVMIT) is a premier engineering college committed to providing quality education and fostering innovation. Established with a vision to create technically competent professionals, SVMIT has consistently ranked among the top engineering colleges in the region.</p>
+          <p>Our institution offers state-of-the-art infrastructure, experienced faculty, and industry-aligned curriculum to ensure our students are well-prepared for the challenges of the modern technological landscape.</p>
+          <p>With a strong emphasis on research and development, SVMIT has established numerous centers of excellence and innovation labs that provide students with hands-on experience and exposure to cutting-edge technologies.</p>
+        </div>
+        
+        <div class="about-image">
+          <img src="https://svmit.ac.in/Upload/Gallery/38890dd4-6a31-4428-9f09-09656b4035e2.jpg" alt="SVMIT Campus">
+          <img src="https://svmit.ac.in/Upload/Gallery/76da5b2f-e4fe-4443-a7a0-69d69cae1108.jpg" alt="SVMIT Sports">
+          <img src="https://svmit.ac.in/Upload/Gallery/d4d231d2-f22b-4f2a-a244-c2347d27da0b.jpg" alt="SVMIT Library">
+          <img src="https://svmit.ac.in/Upload/Gallery/cc45b10f-1e6e-4e8e-b010-53b93c2b79dc.jpg" alt="SVMIT Hostel">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Placements Section -->
+  <section class="placements-section">
+    <div class="container placements-container">
+      <div class="section-header">
+        <h2>Our Top Placements</h2>
+        <p>Our students have been placed in leading companies across various industries</p>
+      </div>
+      
+      <div class="placement-cards">
+        <div class="placement-card">
+          <img src="https://svmit.ac.in/Upload/Student/d6fe6e0e-8d43-40de-a0d1-abeda49e9c84.jpg" alt="SHERIL SHAH" class="placement-img">
+          <div class="placement-info">
+            <h3>SHERIL SHAH</h3>
+            <p class="company">Badische Anilin und Soda Fabrik</p>
+            <p class="package">₹12.5 LPA</p>
+          </div>
+        </div>
+        
+        <div class="placement-card">
+          <img src="https://svmit.ac.in/Upload/Student/41d7f590-a9e7-480e-9f15-c142f5efe079.jpg" alt="Patel Satish" class="placement-img">
+          <div class="placement-info">
+            <h3>Patel Satish</h3>
+            <p class="company">Institute of Plasma Research</p>
+            <p class="package">₹10.8 LPA</p>
+          </div>
+        </div>
+        
+        <div class="placement-card">
+          <img src="https://svmit.ac.in/Upload/Student/c1a734c9-382a-43e8-9562-6d3efafd1587.jpg" alt="Sachin Chaubey" class="placement-img">
+          <div class="placement-info">
+            <h3>Sachin Chaubey</h3>
+            <p class="company">Alembic Pharmaceuticals Ltd</p>
+            <p class="package">₹9.2 LPA</p>
+          </div>
+        </div>
+        
+        <div class="placement-card">
+          <img src="https://svmit.ac.in/Upload/Student/f6b90a61-448d-45ea-9030-dd686f2e47a0.png" alt="Rushabh Jani" class="placement-img">
+          <div class="placement-info">
+            <h3>Rushabh Jani</h3>
+            <p class="company">Dynatech System Pvt. Ltd.</p>
+            <p class="package">₹11.0 LPA</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="placement-stats">
+        <div class="stat-item">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Placement Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">200+</div>
+          <div class="stat-label">Companies Visited</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">₹15L</div>
+          <div class="stat-label">Highest Package</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">₹6.5L</div>
+          <div class="stat-label">Average Package</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Admissions</a></li>
+            <li><a href="#">Academic Programs</a></li>
+            <li><a href="#">Research</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Library</a></li>
+            <li><a href="#">Student Portal</a></li>
+            <li><a href="#">Career Services</a></li>
+            <li><a href="#">Campus Life</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect With Us</h4>
+          <p>Stay updated with our newsletter</p>
+          <div class="newsletter">
+            <input type="email" placeholder="Enter your email">
+            <button>Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 JP College of Arts, SVM Institute of Technology. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="script1.js"></script>
+</body>
+</html>
