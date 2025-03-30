@@ -1,7 +1,7 @@
 // Slider functionality
 const slides = [
   {
-    image: 'https://wallpapercave.com/wp/xl8hSG3.jpg',
+    image: 'https://hd.wallpaperswide.com/thumbs/most_beautiful_mountain_scenery-t2.jpg',
     title: 'Welcome to SVM Institute of Technology',
     description: 'Empowering future innovators with excellence in education.'
   },

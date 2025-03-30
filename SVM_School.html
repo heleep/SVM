@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="SVM Higher Secondary School was established by Shri S'ad Vidya Mandal, a reputed trust in Bharuch." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome to SVM School</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/fevicon.png" type="image/x-icon" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- ReCaptcha -->
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=en&onload=onloadCallback&render=explicit" async defer></script>
+    <link rel="stylesheet" href="style1.css">
+  <style>
+    /* Enhanced CSS with professional touches */
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-bg: #f9f9f9;
+      --dark-text: #333;
+      --light-text: #fff;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark-text);
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Section */
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-top: 30px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--secondary-color);
+    }
+    
+    .section-header p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* About College Section */
+    .about-college {
+      padding: 60px 0;
+      background-color: var(--light-bg);
+    }
+    
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+      padding: 20px;
+    }
+    
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .about-image img:hover {
+      transform: scale(1.03);
+    }
+    
+    /* Features Section */
+    .features-section {
+      padding: 60px 0;
+      background-color: white;
+    }
+    
+    .features-section .container {
+      max-width: 800px;
+    }
+    
+    .features-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+    
+    /* Programs Section */
+    .programs {
+      padding: 60px 0;
+      background-color: var(--light-bg);
+    }
+    
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .program-card {
+      background: white;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .program-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+    
+    .program-card p {
+      margin-bottom: 15px;
+      color: #666;
+    }
+    
+    .program-card ul {
+      padding-left: 20px;
+    }
+    
+    .program-card li {
+      margin-bottom: 8px;
+    }
+    
+    /* Notice Board Section */
+    .notice-board {
+      padding: 60px 0;
+      background-color: white;
+    }
+    
+    .notices-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .notice-card {
+      border-left: 4px solid var(--secondary-color);
+      padding: 20px;
+      background: var(--light-bg);
+      transition: all 0.3s ease;
+    }
+    
+    .notice-card:hover {
+      background: #f0f0f0;
+    }
+    
+    .notice-card h3 {
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    
+    .notice-card p {
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+    
+    .notice-card a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+    
+    .notice-card a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .about-image {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-content">
+        <div class="logo">
+          <img src="assets/images/logo.jpg" alt="SVM Logo">
+          <span>SVM Institute of Technology</span>
+        </div>
+        
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="About.html" class="nav-link">About</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Academics</a>
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Undergraduate Programs</a>
+              <a href="#" class="dropdown-item">Graduate Programs</a>
+              <a href="#" class="dropdown-item">Online Learning</a>
+              <a href="#" class="dropdown-item">Short Courses</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Research</a>
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Research Centers</a>
+              <a href="#" class="dropdown-item">Publications</a>
+              <a href="#" class="dropdown-item">Collaborations</a>
+              <a href="#" class="dropdown-item">Innovation Labs</a>
+            </div>
+          </div>
+          <a href="#" class="nav-link">Admissions</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link">College</a>
+            <div class="dropdown-content">
+              <a href="JP College of Arts.html" class="dropdown-item active">JP College of Arts</a>
+              <a href="JP College of Science.html" class="dropdown-item">JP College of Science</a>
+              <a href="SVMIT College.html" class="dropdown-item">SVMIT College</a>
+              <a href="#" class="dropdown-item">MK College of commerce</a>
+              <a href="#" class="dropdown-item">MK College of Arts</a>
+              <div class="submenu">
+                <a href="#">School</a>
+                <div class="submenu-content">
+                    <a href="SVM_School.html">SVM School</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="slider">
+    <div class="slides">
+      <!-- Slides will be inserted by JavaScript -->
+    </div>
+  </div>
+    <style>
+        /* Modal styles for image popups */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 35px;
+            color: #f1f1f1;
+            cursor: pointer;
+        }
+        <style>
+    /* Image Gallery Section */
+    .image-gallery {
+        margin: 40px 0;
+    }
+    
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+    
+    .gallery-grid img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    
+    .gallery-grid img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    
+    /* Important Notices Section */
+    .important-notices {
+        background: linear-gradient(135deg, #2c3e50, #3498db);
+        color: white;
+        padding: 25px;
+        border-radius: 10px;
+        margin: 40px 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .important-notices h2 {
+        color: white;
+        margin-top: 0;
+        font-size: 1.8rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 15px;
+    }
+    
+    .important-notices h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: #e74c3c;
+    }
+    
+    .important-notices ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 20px 0 0 0;
+    }
+    
+    .important-notices li {
+        position: relative;
+        padding: 15px 0 15px 35px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 1.1rem;
+    }
+    
+    .important-notices li:last-child {
+        border-bottom: none;
+    }
+    
+    .important-notices li::before {
+        content: '\f071'; /* FontAwesome exclamation icon */
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        top: 15px;
+        color: #f1c40f;
+        font-size: 1.2rem;
+    }
+    
+    /* Glow animation for important notices */
+    @keyframes glow-pulse {
+        0% { box-shadow: 0 0 10px rgba(46, 134, 222, 0.7); }
+        50% { box-shadow: 0 0 20px rgba(46, 134, 222, 0.9); }
+        100% { box-shadow: 0 0 10px rgba(46, 134, 222, 0.7); }
+    }
+    
+    .important-notices {
+        animation: glow-pulse 2s infinite;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .gallery-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        
+        .important-notices li {
+            padding: 12px 0 12px 30px;
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<!-- Main Content Section -->
+<main class="main-content">
+    <div class="container">
+        <h1>Welcome to SVM Higher Secondary School</h1>
+        <p>SVM Higher Secondary School was established by Shri S'ad Vidya Mandal, a reputed trust in Bharuch. The school is affiliated with the Gujarat Secondary and Higher Secondary Education Board (GSEB) and offers education from Kindergarten to 12th grade.</p>
+        <p>Shri S’ad Vidya Mandal was established in 1954 as a public trust and is registered under the Bombay Public Trust Act 1950 and also under the Society’s Registration Act XXI of 1860. SVM Higher Secondary School was established by Shri S’ad Vidya Mandal, a reputed trust in Bharuch, which was established in 1954.
+
+            Shri S’ad Vidya Mandal has established and manages several colleges with under & post graduate courses in Arts, Science, Commerce, Engineering, Computer Applications etc.
+            
+            SVM Higher Secondary School was established on 17th June 2009 and is an English medium co-educational institution.
+            
+            Affiliated to Gujarat State Secondary & Higher Secondary Education Board, Gujarat(GSHSEB).
+            
+            This school is managed by highly reputed Trust with well qualified & experienced teaching staff.
+            
+            Quality & Value- based education
+            The academic syllabus is in total consonance with current trends
+            Confidence & sound attitude building through co-curricular & extra –curricular activities
+            Grooming in traditional as well as modern cosmopolitan Culture
+            Individual attention to the children
+            Special emphasis on cultivating the skill- sets to compete in all forms of examinations
+            Regular seminars, talks, competitions, tours, medical camps, etc.
+            Exposure to external exams like Olympiads, GK IQ, IAPT, & PRL
+            Activity based learning in Pre-Primary section
+            NCERT backed syllabus through regular Work Sheets in Lower and Upper Primary classes
+            Well-maintained practical labs for Secondary & Higher Secondary sections
+            Teaching through play- way method and multi- sensory approach for the Pre- primary children</p>
+        <!-- Image Gallery Section -->
+        <section class="image-gallery">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <img src="https://www.svmschool.info/img/gallery/Artboard%2011.jpg" alt="School Building" onclick="openModal(this.src)">
+                <img src="https://www.svmschool.info/img/gallery/46.jpg" alt="Classroom" onclick="openModal(this.src)">
+                <img src="https://www.svmschool.info/img/gallery/Artboard%206.jpg" alt="Students Activity" onclick="openModal(this.src)">
+                <img src="https://www.svmschool.info/img/gallery/Artboard%2010.jpg" alt="School Event" onclick="openModal(this.src)">
+            </div>
+        </section>
+
+        <!-- Improved Important Notices Section -->
+        <section class="important-notices">
+            <h2><i class="fas fa-bullhorn"></i> Important Notices</h2>
+            <ul>
+                <li><strong>Independence Day Holiday:</strong> School will remain closed on 15th August for Independence Day celebrations.</li>
+                <li><strong>Parent-Teacher Meeting:</strong> Scheduled for 20th August at 10 AM in the school auditorium.</li>
+                <li><strong>Annual Sports Day:</strong> Will be held on 25th August. All students must participate.</li>
+                <li><strong>Exam Schedule:</strong> Mid-term examinations begin from 1st September. Timetable will be shared soon.</li>
+            </ul>
+            <div class="notice-footer">
+                <a href="#" class="view-all">View All Notices <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal for image popups -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+</main>
+        
+       
+        <footer>
+            <div class="container">
+              <div class="footer-grid">
+                <div class="footer-section">
+                  <h4>Quick Links</h4>
+                  <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Admissions</a></li>
+                    <li><a href="#">Academic Programs</a></li>
+                    <li><a href="#">Research</a></li>
+                  </ul>
+                </div>
+                <div class="footer-section">
+                  <h4>Resources</h4>
+                  <ul>
+                    <li><a href="#">Library</a></li>
+                    <li><a href="#">Student Portal</a></li>
+                    <li><a href="#">Career Services</a></li>
+                    <li><a href="#">Campus Life</a></li>
+                  </ul>
+                </div>
+                <div class="footer-section">
+                  <h4>Connect With Us</h4>
+                  <p>Stay updated with our newsletter</p>
+                  <div class="newsletter">
+                    <input type="email" placeholder="Enter your email">
+                    <button>Subscribe</button>
+                  </div>
+                </div>
+              </div>
+              <div class="footer-bottom">
+                <p>&copy; 2024 JP College of Arts, SVM Institute of Technology. All rights reserved.</p>
+              </div>
+            </div>
+          </footer>
+          <script src="script1.js"></script>
+        </body>
+        </html>
+    </main>
+   
