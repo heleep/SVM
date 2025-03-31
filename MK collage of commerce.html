@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK College of Commerce - SVM Institute of Technology</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style1.css">
+  <style>
+    /* Enhanced CSS with professional touches */
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-bg: #f9f9f9;
+      --dark-text: #333;
+      --light-text: #fff;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark-text);
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Section */
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-top: 30px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--secondary-color);
+    }
+    
+    .section-header p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* About College Section */
+    .about-college {
+      padding: 60px 0;
+      background-color: var(--light-bg);
+    }
+    
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+      padding: 20px;
+    }
+    
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .about-image img:hover {
+      transform: scale(1.03);
+    }
+    
+    /* Features Section */
+    .features-section {
+      padding: 60px 0;
+      background-color: white;
+    }
+    
+    .features-section .container {
+      max-width: 800px;
+    }
+    
+    .features-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+    
+    /* Programs Section */
+    .programs {
+      padding: 60px 0;
+      background-color: var(--light-bg);
+    }
+    
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .program-card {
+      background: white;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .program-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+    
+    .program-card p {
+      margin-bottom: 15px;
+      color: #666;
+    }
+    
+    .program-card ul {
+      padding-left: 20px;
+    }
+    
+    .program-card li {
+      margin-bottom: 8px;
+    }
+    
+    /* Notice Board Section */
+    .notice-board {
+      padding: 60px 0;
+      background-color: white;
+    }
+    
+    .notices-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .notice-card {
+      border-left: 4px solid var(--secondary-color);
+      padding: 20px;
+      background: var(--light-bg);
+      transition: all 0.3s ease;
+    }
+    
+    .notice-card:hover {
+      background: #f0f0f0;
+    }
+    
+    .notice-card h3 {
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    
+    .notice-card p {
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+    
+    .notice-card a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+    
+    .notice-card a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .about-image {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-content">
+        <div class="logo">
+          <img src="assets/images/logo.jpg" alt="SVM Logo">
+          <span>SVM Institute of Technology</span>
+        </div>
+        
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="About.html" class="nav-link">About</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Academics</a>
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Undergraduate Programs</a>
+              <a href="#" class="dropdown-item">Graduate Programs</a>
+              <a href="#" class="dropdown-item">Online Learning</a>
+              <a href="#" class="dropdown-item">Short Courses</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Research</a>
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Research Centers</a>
+              <a href="#" class="dropdown-item">Publications</a>
+              <a href="#" class="dropdown-item">Collaborations</a>
+              <a href="#" class="dropdown-item">Innovation Labs</a>
+            </div>
+          </div>
+          <a href="#" class="nav-link">Admissions</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link">College</a>
+            <div class="dropdown-content">
+              <a href="JP College of Arts.html" class="dropdown-item">JP College of Arts</a>
+              <a href="JP College of Science.html" class="dropdown-item">JP College of Science</a>
+              <a href="SVMIT College.html" class="dropdown-item">SVMIT College</a>
+              <a href="MK College of Commerce.html" class="dropdown-item active">MK College of Commerce</a>
+              <a href="#" class="dropdown-item">MK College of Arts</a>
+              <div class="submenu">
+                <a href="#">School</a>
+                <div class="submenu-content">
+                    <a href="SVM_School.html">SVM School</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="slider">
+    <div class="slides">
+      <!-- Slides will be inserted by JavaScript -->
+    </div>
+  </div>
+
+  <section class="about-college">
+    <div class="container">
+      <div class="section-header">
+        <h2>About MK College of Commerce</h2>
+        <p>Established in 1970, MK College of Commerce has been a leader in business education</p>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>MK College of Commerce was established in 1970 with the vision to provide quality commerce education to students in the region. The college has grown to become one of the premier institutions for commerce education, offering both undergraduate and postgraduate programs.</p>
+          <p>Our college focuses on providing practical business knowledge along with theoretical concepts, preparing students for the dynamic world of commerce and business. We have strong industry connections that help our students gain real-world experience through internships and placements.</p>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Commerce Classroom">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Commerce Students">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="College Seminar">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Commerce Lab">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Features of Our College</h2>
+      </div>
+      <p>Our commerce programs are designed to meet industry standards and prepare students for successful careers.</p>
+      <p>Infrastructure Overview: Modern classrooms with digital learning facilities.
+        <br>
+        Business Labs: Equipped with the latest software for accounting, finance, and business analytics.
+        <br>
+        Industry Connect: Regular guest lectures and workshops from industry leaders.
+        <br>
+        Placement Support: Dedicated placement cell with strong corporate relationships.</p>
+    </div>
+  </section>
+
+  <section class="programs">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Programs</h2>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card">
+          <h3>Bachelor of Commerce</h3>
+          <p>Comprehensive undergraduate program covering all aspects of commerce and business</p>
+          <ul>
+            <li>Accounting</li>
+            <li>Business Law</li>
+            <li>Economics</li>
+            <li>Business Management</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <h3>Master of Commerce</h3>
+          <p>Advanced studies in commerce with specialization options</p>
+          <ul>
+            <li>Advanced Accounting</li>
+            <li>Financial Management</li>
+            <li>Marketing</li>
+            <li>Business Analytics</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <h3>Bachelor of Business Administration</h3>
+          <p>Professional program focusing on business management skills</p>
+          <ul>
+            <li>Entrepreneurship</li>
+            <li>Human Resources</li>
+            <li>Marketing</li>
+            <li>Operations Management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="notice-board">
+    <div class="container">
+      <div class="section-header">
+        <h2>Notice Board</h2>
+      </div>
+      <div class="notices-container">
+        <div class="notice-card">
+          <h3>30/03/2025</h3>
+          <p>B.Com Sem IV Examination Schedule</p>
+          <a href="#" target="_blank">View Details</a>
+        </div>
+        <div class="notice-card">
+          <h3>28/03/2025</h3>
+          <p>Industry Workshop on Digital Marketing</p>
+          <a href="#" target="_blank">View Details</a>
+        </div>
+        <div class="notice-card">
+          <h3>25/03/2025</h3>
+          <p>Placement Drive - Major Accounting Firms</p>
+          <a href="#" target="_blank">View Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Admissions</a></li>
+            <li><a href="#">Academic Programs</a></li>
+            <li><a href="#">Research</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Library</a></li>
+            <li><a href="#">Student Portal</a></li>
+            <li><a href="#">Career Services</a></li>
+            <li><a href="#">Campus Life</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect With Us</h4>
+          <p>Stay updated with our newsletter</p>
+          <div class="newsletter">
+            <input type="email" placeholder="Enter your email">
+            <button>Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 MK College of Commerce, SVM Institute of Technology. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="script1.js"></script>
+</body>
+</html>

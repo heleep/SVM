@@ -103,3 +103,19 @@ fetch('template/get_events.php')
     });
   })
   .catch(error => console.error('Error fetching events:', error));
+
+// Highlight active navigation link
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  navLinks.forEach(link => {
+    const linkHref = link.getAttribute('href');
+    if (linkHref === currentPage || 
+        (currentPage === 'index.html' && linkHref === '#')) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+});
