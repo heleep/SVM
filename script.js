@@ -49,6 +49,7 @@ slides.forEach((slide, index) => {
   slidesContainer.appendChild(slideElement);
 });
 
+
 // Automatic slider
 let currentSlide = 0;
 const slideElements = document.querySelectorAll('.slide');
