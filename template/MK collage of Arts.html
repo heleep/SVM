@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK College of Arts - SVM Institute of Technology</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="/style1.css">
+  <style>
+    :root {
+      --primary-color: #4a2c82;
+      --secondary-color: #9c27b0;
+      --accent-color: #ff5722;
+      --light-bg: #f8f5fe;
+      --dark-text: #2d2d2d;
+      --light-text: #fff;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark-text);
+      margin: 0;
+      padding: 0;
+      background-color: #fefefe;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Section */
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-top: 30px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      opacity: 0;
+      animation: fadeInDown 1s ease forwards;
+    }
+    
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--secondary-color);
+    }
+    
+    .section-header p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.3s forwards;
+    }
+    
+    /* About College Section */
+    .about-college {
+      padding: 80px 0;
+      background-color: var(--light-bg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .about-college::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80') center/cover;
+      opacity: 0.03;
+      z-index: 0;
+    }
+    
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+      padding: 20px;
+      opacity: 0;
+      transform: translateX(-50px);
+      animation: fadeInLeft 1s ease 0.5s forwards;
+    }
+    
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      opacity: 0;
+      transform: translateX(50px);
+      animation: fadeInRight 1s ease 0.5s forwards;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.5s ease;
+      filter: grayscale(20%);
+    }
+    
+    .about-image img:hover {
+      transform: scale(1.03);
+      filter: grayscale(0%);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    
+    /* Features Section */
+    .features-section {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .features-section .container {
+      max-width: 800px;
+    }
+    
+    .features-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 15px;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.7s forwards;
+    }
+    
+    /* Programs Section */
+    .programs {
+      padding: 80px 0;
+      background-color: var(--light-bg);
+    }
+    
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .program-card {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.5s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    .program-card:nth-child(1) {
+      animation: fadeInUp 0.8s ease 0.3s forwards;
+    }
+    .program-card:nth-child(2) {
+      animation: fadeInUp 0.8s ease 0.5s forwards;
+    }
+    .program-card:nth-child(3) {
+      animation: fadeInUp 0.8s ease 0.7s forwards;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-10px) !important;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .program-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .program-card h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--secondary-color);
+    }
+    
+    .program-card p {
+      margin-bottom: 15px;
+      color: #666;
+    }
+    
+    .program-card ul {
+      padding-left: 20px;
+    }
+    
+    .program-card li {
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 15px;
+    }
+    
+    .program-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--secondary-color);
+    }
+    
+    /* Notice Board Section */
+    .notice-board {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .notices-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .notice-card {
+      border-left: 4px solid var(--secondary-color);
+      padding: 20px;
+      background: var(--light-bg);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .notice-card:nth-child(1) {
+      animation: fadeIn 0.8s ease 0.3s forwards;
+    }
+    .notice-card:nth-child(2) {
+      animation: fadeIn 0.8s ease 0.5s forwards;
+    }
+    .notice-card:nth-child(3) {
+      animation: fadeIn 0.8s ease 0.7s forwards;
+    }
+    
+    .notice-card:hover {
+      background: #f0f0f0;
+      transform: translateY(-5px) !important;
+    }
+    
+    .notice-card h3 {
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    
+    .notice-card p {
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+    
+    .notice-card a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    
+    .notice-card a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+    
+    .notice-card a:hover {
+      color: var(--primary-color);
+    }
+    
+    .notice-card a:hover::after {
+      width: 100%;
+    }
+    
+    /* Gallery Section */
+    .gallery-section {
+      padding: 80px 0;
+      background-color: var(--light-bg);
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      height: 200px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    
+    .gallery-item:nth-child(1) { animation: fadeIn 0.8s ease 0.3s forwards; }
+    .gallery-item:nth-child(2) { animation: fadeIn 0.8s ease 0.4s forwards; }
+    .gallery-item:nth-child(3) { animation: fadeIn 0.8s ease 0.5s forwards; }
+    .gallery-item:nth-child(4) { animation: fadeIn 0.8s ease 0.6s forwards; }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-item .overlay {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background: rgba(74, 44, 130, 0.8);
+      color: white;
+      transition: bottom 0.3s ease;
+    }
+    
+    .gallery-item:hover .overlay {
+      bottom: 0;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .about-image {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+      
+      .programs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Floating Animation */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-content">
+        <div class="logo">
+          <img src="/assets/images/logo.jpg" alt="SVM Logo">
+          <span>SVM Institute of Technology</span>
+        </div>
+        
+        <div class="nav-links">
+          <a href="/index.html" class="nav-link">Home</a>
+          <a href="/template/About.html" class="nav-link">About</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Academics</a>
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Undergraduate Programs</a>
+              <a href="#" class="dropdown-item">Graduate Programs</a>
+              <a href="#" class="dropdown-item">Online Learning</a>
+              <a href="#" class="dropdown-item">Short Courses</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Research</a>
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Research Centers</a>
+              <a href="#" class="dropdown-item">Publications</a>
+              <a href="#" class="dropdown-item">Collaborations</a>
+              <a href="#" class="dropdown-item">Innovation Labs</a>
+            </div>
+          </div>
+          <a href="#" class="nav-link">Admissions</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link">College</a>
+            <div class="dropdown-content">
+              <a href="/template/JP College of Arts.html" class="dropdown-item">JP College of Arts</a>
+              <a href="/template/JP College of Science.html" class="dropdown-item">JP College of Science</a>
+              <a href="/template/SVMIT College.html" class="dropdown-item">SVMIT College</a>
+              <a href="/template/MK collage of Commerce.html" class="dropdown-item">MK College of Commerce</a>
+              <a href="/template/MK collage of Arts.html" class="dropdown-item active">MK College of Arts</a>
+              <div class="submenu">
+                <a href="#">School</a>
+                <div class="submenu-content">
+                    <a href="/template/SVM_School.html">SVM School</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="slider">
+    <div class="slides">
+      <!-- Slides will be inserted by JavaScript -->
+    </div>
+  </div>
+
+  <section class="about-college">
+    <div class="container">
+      <div class="section-header">
+        <h2>About MK College of Arts</h2>
+        <p>Established in 1965, MK College of Arts has been nurturing creative minds and artistic talents for over half a century</p>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>MK College of Arts was founded with the vision to create a vibrant space for artistic exploration and intellectual growth. Our college has consistently ranked among the top arts colleges in the region, known for its innovative curriculum and distinguished faculty.</p>
+          <p>We offer a dynamic learning environment that encourages students to push creative boundaries while grounding them in classical artistic traditions. Our alumni network includes renowned artists, writers, and cultural leaders who continue to shape the creative landscape.</p>
+          <p>The college boasts state-of-the-art facilities including dedicated studios for painting, sculpture, digital arts, and performance spaces for theater and dance.</p>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Art Studio">
+          <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Painting Class">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Theater Performance">
+          <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Music Room">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose MK College of Arts?</h2>
+      </div>
+      <p>Our college offers a unique blend of traditional arts education and contemporary creative practices, preparing students for diverse careers in the arts.</p>
+      <p><strong>Creative Environment:</strong> Inspiring spaces designed to stimulate artistic expression and collaboration.
+        <br>
+        <strong>Expert Faculty:</strong> Accomplished artists and scholars who provide personalized mentorship.
+        <br>
+        <strong>Interdisciplinary Approach:</strong> Opportunities to explore connections between different art forms.
+        <br>
+        <strong>Exhibition Opportunities:</strong> Regular showcases of student work in professional gallery spaces.</p>
+    </div>
+  </section>
+
+  <section class="programs">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Programs</h2>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card">
+          <h3>Bachelor of Fine Arts</h3>
+          <p>Comprehensive program covering various visual arts disciplines with specialization options</p>
+          <ul>
+            <li>Painting & Drawing</li>
+            <li>Sculpture</li>
+            <li>Printmaking</li>
+            <li>Digital Arts</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <h3>Bachelor of Performing Arts</h3>
+          <p>Immersive training in theater, dance, and music performance</p>
+          <ul>
+            <li>Theater Arts</li>
+            <li>Contemporary Dance</li>
+            <li>Music Performance</li>
+            <li>Stage Design</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <h3>Master of Arts</h3>
+          <p>Advanced studies in art history, theory, and practice</p>
+          <ul>
+            <li>Art History</li>
+            <li>Curatorial Studies</li>
+            <li>Arts Administration</li>
+            <li>Cultural Studies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Student Gallery</h2>
+        <p>Explore exceptional work created by our talented students</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Student Artwork">
+          <div class="overlay">
+            <h3>Abstract Composition</h3>
+            <p>By Sarah Johnson, BFA 2024</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Student Artwork">
+          <div class="overlay">
+            <h3>Still Life Study</h3>
+            <p>By Michael Chen, BFA 2023</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Student Artwork">
+          <div class="overlay">
+            <h3>Sculpture Installation</h3>
+            <p>By Priya Patel, BFA 2025</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Student Artwork">
+          <div class="overlay">
+            <h3>Mixed Media</h3>
+            <p>By David Kim, BFA 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="notice-board">
+    <div class="container">
+      <div class="section-header">
+        <h2>News & Events</h2>
+      </div>
+      <div class="notices-container">
+        <div class="notice-card">
+          <h3>15/04/2025</h3>
+          <p>Annual Student Art Exhibition - Submissions Open</p>
+          <a href="#" target="_blank">View Details</a>
+        </div>
+        <div class="notice-card">
+          <h3>10/04/2025</h3>
+          <p>Guest Lecture: Contemporary Art Trends with Prof. Elena Rodriguez</p>
+          <a href="#" target="_blank">View Details</a>
+        </div>
+        <div class="notice-card">
+          <h3>05/04/2025</h3>
+          <p>Theater Department Presents: "The Tempest" - Tickets Available</p>
+          <a href="#" target="_blank">View Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Admissions</a></li>
+            <li><a href="#">Academic Programs</a></li>
+            <li><a href="#">Research</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Library</a></li>
+            <li><a href="#">Student Portal</a></li>
+            <li><a href="#">Career Services</a></li>
+            <li><a href="#">Campus Life</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect With Us</h4>
+          <p>Stay updated with our newsletter</p>
+          <div class="newsletter">
+            <input type="email" placeholder="Enter your email">
+            <button>Subscribe</button>
+          </div>
+          <div class="social-links" style="margin-top: 20px;">
+            <a href="#" style="color: var(--primary-color); margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color: var(--primary-color); margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: var(--primary-color); margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+            <a href="#" style="color: var(--primary-color); font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 MK College of Arts, SVM Institute of Technology. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="/script1.js"></script>
+  <script>
+    // Enhanced slider with arts-specific content
+    const slides = [
+      {
+        image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80',
+        title: 'Welcome to MK College of Arts',
+        description: 'Where creativity meets excellence in artistic education'
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+        title: 'Visual Arts Program',
+        description: 'Develop your unique artistic voice with expert guidance'
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+        title: 'Performing Arts',
+        description: 'Master your craft in our state-of-the-art performance spaces'
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+        title: 'Creative Community',
+        description: 'Join a vibrant network of artists and creators'
+      }
+    ];
+
+    // Create slides
+    const slidesContainer = document.querySelector('.slides');
+    slides.forEach((slide, index) => {
+      const slideElement = document.createElement('div');
+      slideElement.className = `slide ${index === 0 ? 'active' : ''}`;
+      slideElement.style.backgroundImage = `url(${slide.image})`;
+
+      const content = document.createElement('div');
+      content.className = 'slide-content';
+      content.innerHTML = `
+        <h1 class="animate__animated animate__fadeIn">${slide.title}</h1>
+        <p class="animate__animated animate__fadeIn animate__delay-1s">${slide.description}</p>
+        <button class="animate__animated animate__fadeIn animate__delay-2s">
+          Explore Programs
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      `;
+
+      slideElement.appendChild(content);
+      slidesContainer.appendChild(slideElement);
+    });
+
+    // Automatic slider
+    let currentSlide = 0;
+    const slideElements = document.querySelectorAll('.slide');
+
+    function nextSlide() {
+      slideElements[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slideElements.length;
+      slideElements[currentSlide].classList.add('active');
+    }
+
+    const slideInterval = setInterval(nextSlide, 5000);
+
+    // Pause slider on hover
+    slidesContainer.addEventListener('mouseenter', () => {
+      clearInterval(slideInterval);
+    });
+
+    slidesContainer.addEventListener('mouseleave', () => {
+      slideInterval = setInterval(nextSlide, 5000);
+    });
+
+    // Gallery hover effect
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        item.querySelector('img').style.transform = 'scale(1.1)';
+        item.querySelector('.overlay').style.bottom = '0';
+      });
+      
+      item.addEventListener('mouseleave', () => {
+        item.querySelector('img').style.transform = 'scale(1)';
+        item.querySelector('.overlay').style.bottom = '-100%';
+      });
+    });
+
+    // Scroll animations
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.program-card, .notice-card, .gallery-item');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if(elementPosition < screenPosition) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0) scale(1)';
+        }
+      });
+    };
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+  </script>
+</body>
+</html>
