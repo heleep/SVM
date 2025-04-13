@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Home - SVMIT</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+    }
+    .sidebar {
+      width: 220px;
+      height: 100vh;
+      background-color: #002244;
+      padding-top: 20px;
+      color: white;
+      position: fixed;
+    }
+    .sidebar img {
+      display: block;
+      margin: 0 auto 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    .sidebar h2 {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .sidebar a:hover {
+      background-color: #004488;
+    }
+    .main-content {
+      margin-left: 220px;
+      padding: 40px;
+      width: 100%;
+    }
+    h1 {
+      color: #003366;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="/SVM/assets/images/logo.jpg" alt="SVM Logo">
+    <h2>Admin</h2>
+    <a href="manage_events.php">Manage Events</a>
+    <!-- Add more links here if needed -->
+  </div>
+
+  <div class="main-content">
+    <h1>Welcome, Admin</h1>
+    <p>Select an option from the left menu to manage the website content.</p>
+  </div>
+</body>
+</html>
