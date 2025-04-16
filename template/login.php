@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../db/database_connection.php'; // adjust path as needed
+include '../db/database_connection.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve the email and password from the form
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['user_email'] = $email;
                 // Redirect to home page (index.html or a dashboard)
-                header("Location: SVM/index.html");
+                header("Location: /SVM/index.html");
                 exit;
             } else {
                 $error = "Invalid password. Please try again.";
