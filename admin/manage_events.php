@@ -164,8 +164,9 @@ $events = $conn->query("SELECT * FROM SVM_Events ORDER BY Event_date DESC");
   <div class="sidebar">
     <img src="/SVM/assets/images/logo.jpg" alt="SVM Logo">
     <h2>Admin</h2>
-    <a href="../admin/admin_home.php">Home</a>
-    <a href="../admin/manage_events.php">Manage Events</a>
+    <a href="admin_home.html">Home</a>
+    <a href="manage_events.php">Manage Events</a>
+    <a href="manage_image.php">Manage images</a>
   </div>
 
   <div class="main-content">
