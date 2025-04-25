@@ -107,10 +107,11 @@ $images = $conn->query("SELECT * FROM images ORDER BY uploaded_at DESC");
 <body>
     <div class="sidebar">
         <img src="/SVM/assets/images/logo.jpg" alt="SVM Logo">
-        <h2>Admin Panel</h2>
+        <h2>Admin</h2>
         <a href="admin_home.html">Home</a>
         <a href="manage_events.php">Manage Events</a>
         <a href="manage_image.php">Manage Images</a>
+        <a href="manage_principal.php">Manage Principal</a>
     </div>
 
     <div class="main-content">

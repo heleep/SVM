@@ -11,8 +11,9 @@ if (!isset($_SESSION['admin'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_event'])) {
   $event = $_POST['event_name'];
   $date = $_POST['event_date'];
-  $stmt = $conn->prepare("INSERT INTO SVM_Events (SVM_Event, Event_date) VALUES (?, ?)");
-  $stmt->bind_param("ss", $event, $date);
+  $description = $_POST['event_description'];
+  $stmt = $conn->prepare("INSERT INTO SVM_Events (SVM_Event, Event_date, Event_description) VALUES (?, ?, ?)");
+  $stmt->bind_param("ss", $event, $date, $description);
   $stmt->execute();
   header("Location: manage_events.php");
   exit();
@@ -33,8 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_event'])) {
   $original_name = $_POST['original_name'];
   $updated_name = $_POST['updated_event_name'];
   $updated_date = $_POST['updated_event_date'];
-  $stmt = $conn->prepare("UPDATE SVM_Events SET SVM_Event = ?, Event_date = ? WHERE SVM_Event = ?");
-  $stmt->bind_param("sss", $updated_name, $updated_date, $original_name);
+  $updated_description = $_POST['updated_event_description'];
+  $stmt = $conn->prepare("UPDATE SVM_Events SET SVM_Event = ?, Event_date = ?, Event_description = ? WHERE SVM_Event = ?");
+  $stmt->bind_param("sss", $updated_name, $updated_date, $updated_description, $original_name);
   $stmt->execute();
   header("Location: manage_events.php");
   exit();
@@ -166,7 +168,8 @@ $events = $conn->query("SELECT * FROM SVM_Events ORDER BY Event_date DESC");
     <h2>Admin</h2>
     <a href="admin_home.html">Home</a>
     <a href="manage_events.php">Manage Events</a>
-    <a href="manage_image.php">Manage images</a>
+    <a href="manage_image.php">Manage Images</a>
+    <a href="manage_principal.php">Manage Principal</a>
   </div>
 
   <div class="main-content">
@@ -175,6 +178,7 @@ $events = $conn->query("SELECT * FROM SVM_Events ORDER BY Event_date DESC");
     <form class="add-form" method="POST">
       <input type="text" name="event_name" placeholder="Event Name" required>
       <input type="date" name="event_date" required>
+      <textarea name="event_description" placeholder="Event Description"></textarea>
       <button type="submit" name="add_event">Add</button>
     </form>
 
@@ -182,6 +186,7 @@ $events = $conn->query("SELECT * FROM SVM_Events ORDER BY Event_date DESC");
       <tr>
         <th>Event</th>
         <th>Date</th>
+        <th>Description</th>
         <th>Actions</th>
       </tr>
       <?php while($event = $events->fetch_assoc()): ?>
@@ -192,6 +197,9 @@ $events = $conn->query("SELECT * FROM SVM_Events ORDER BY Event_date DESC");
             <input type="hidden" name="original_name" value="<?= htmlspecialchars($event['SVM_Event']) ?>">
           </td>
           <td><input type="date" name="updated_event_date" value="<?= htmlspecialchars($event['Event_date']) ?>" required></td>
+          <td class="event-description">
+            <textarea name="updated_event_description"><?= htmlspecialchars($event['Event_description']) ?></textarea>
+          </td>
           <td>
             <button type="submit" name="update_event" class="btn-update">Update</button>
             <a href="?delete=<?= urlencode($event['SVM_Event']) ?>" class="btn-delete" onclick="return confirm('Delete this event?');">Delete</a>

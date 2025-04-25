@@ -3,50 +3,43 @@ session_start();
 include '../db/database_connection.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve the email and password from the form
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
+  $email = trim($_POST['email']);
+  $password = trim($_POST['password']);
 
-    // If the user is the admin, check credentials
-    if ($email === 'admin@gmail.com' && $password === '@admin_') {
-        // Set a session variable to indicate admin is logged in
-        $_SESSION['admin'] = true;
-        $_SESSION['admin_email'] = $email;
-        // Redirect to admin dashboard page
-        header("Location: /SVM/admin/admin_home.html");
-        exit;
-    } else {
-        // For any other user, look up in the database
-        // Use a prepared statement for security
-        $stmt = $conn->prepare("SELECT id, password FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->store_result();
+  // Admin login check
+  if ($email === 'admin@gmail.com' && $password === '@admin_') {
+      $_SESSION['admin'] = true;
+      $_SESSION['admin_email'] = $email;
+      header("Location: /SVM/admin/admin_home.html");
+      exit;
+  }
 
-        // Check if we got exactly one matching record
-        if ($stmt->num_rows === 1) {
-            $stmt->bind_result($user_id, $hashedPassword);
-            $stmt->fetch();
-            // Verify the password. If you are storing plain text (not recommended), you can do:
-            // if ($password === $hashedPassword) { ... }
-            // Otherwise, if you are using password hashing:
-            if (password_verify($password, $hashedPassword)) {
-                // Store user session info
-                $_SESSION['user_id'] = $user_id;
-                $_SESSION['user_email'] = $email;
-                // Redirect to home page (index.html or a dashboard)
-                header("Location: /SVM/index.html");
-                exit;
-            } else {
-                $error = "Invalid password. Please try again.";
-            }
-        } else {
-            $error = "No user found with that email.";
-        }
-        $stmt->close();
-    }
+  // Principal login check
+  $stmt = $conn->prepare("SELECT user_name, user_password FROM SVM_Principal WHERE user_name = ?");
+  $stmt->bind_param("s", $email);
+  $stmt->execute();
+  $stmt->store_result();
+
+  if ($stmt->num_rows === 1) {
+      $stmt->bind_result($principal_email, $principal_password);
+      $stmt->fetch();
+
+      if ($password === $principal_password) {
+          $_SESSION['principal'] = true;
+          $_SESSION['principal_email'] = $email;
+          header("Location: /SVM/index.php");
+          exit;
+      } else {
+          $error = "Invalid password. Please try again.";
+      }
+      $stmt->close();
+  } else {
+      // If neither admin nor principal found
+      $error = "Invalid credentials. Only authorized personnel can login.";
+  }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

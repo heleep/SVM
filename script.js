@@ -106,13 +106,13 @@ fetch('template/get_events.php')
 
 // Highlight active navigation link
 document.addEventListener('DOMContentLoaded', function() {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const currentPage = window.location.pathname.split('/').pop() || 'index.php';
   const navLinks = document.querySelectorAll('.nav-link');
   
   navLinks.forEach(link => {
     const linkHref = link.getAttribute('href');
     if (linkHref === currentPage || 
-        (currentPage === 'index.html' && linkHref === '#')) {
+        (currentPage === 'index.php' && linkHref === '#')) {
       link.classList.add('active');
     } else {
       link.classList.remove('active');
