@@ -6,7 +6,7 @@ const slides = [
       description: 'Empowering future innovators with excellence in education.'
     },
     {
-      image: '/assets/images/1.jpg',
+      image: 'https://images.unsplash.com/photo-1592280771190-3e2e4d571952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
       title: 'JP College of Arts',
       description: 'JEstablished in 1955, JP College of Arts has been a pioneer in arts education'
     },

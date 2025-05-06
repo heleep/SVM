@@ -6,7 +6,7 @@ const slides = [
     description: 'Empowering future innovators with excellence in education.'
   },
   {
-    image: '/assets/images/1.jpg',
+    image: 'https://picsum.photos/600/400',
     title: 'Innovative Research',
     description: 'Advancing technology through groundbreaking research.'
   },

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 17, 2025 at 09:59 AM
+-- Generation Time: May 06, 2025 at 12:07 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -39,51 +39,10 @@ CREATE TABLE `images` (
 
 INSERT INTO `images` (`id`, `filename`, `uploaded_at`) VALUES
 (2, '6800b2c6d98ec_one_piece_ace-wallpaper-1920x1080.jpg', '2025-04-16 07:11:50'),
-(6, '6800b3370982f_one_piece_luffy_superpower-wallpaper-3554x1999.jpg', '2025-04-17 07:52:23');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `SVM_Events`
---
-
-CREATE TABLE `SVM_Events` (
-  `SVM_Event` text NOT NULL,
-  `Event_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `SVM_Events`
---
-
-INSERT INTO `SVM_Events` (`SVM_Event`, `Event_date`) VALUES
-('freshers', '3344-02-12'),
-('makwana', '0445-03-12'),
-('dfsf', '4567-03-12'),
-('patel princ', '0099-09-09'),
-('dfsf', '0323-02-23'),
-('mayur', '2001-01-01'),
-('mayur', '9999-09-09'),
-('princ', '2025-04-16');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `SVM_Principal`
---
-
-CREATE TABLE `SVM_Principal` (
-  `user_name` varchar(255) NOT NULL,
-  `user_password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `SVM_Principal`
---
-
-INSERT INTO `SVM_Principal` (`user_name`, `user_password`) VALUES
-('admin@gmail.com', '@admin_'),
-('patel@gmail.com', '2635');
+(6, '6800b3370982f_one_piece_luffy_superpower-wallpaper-3554x1999.jpg', '2025-04-17 07:52:23'),
+(7, '6800b94c4bdac_space-wallpaper-3554x1999.jpg', '2025-04-17 08:18:20'),
+(9, '680b2aad491a0_bugatti_tourbillon_hybrid_hyper_sports_car-wallpaper-3554x1999.jpg', '2025-04-25 06:24:45'),
+(10, '680b2ac1c6bb8_minecraft-forest-4k-wallpaper-uhdpaper.com-619@5@e.jpg', '2025-04-25 06:25:05');
 
 --
 -- Indexes for dumped tables
@@ -96,12 +55,6 @@ ALTER TABLE `images`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `SVM_Principal`
---
-ALTER TABLE `SVM_Principal`
-  ADD UNIQUE KEY `user_name` (`user_name`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -109,7 +62,7 @@ ALTER TABLE `SVM_Principal`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

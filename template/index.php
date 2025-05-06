@@ -15,7 +15,7 @@ if (isset($_SESSION['principal'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SVM Institute of Technology</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
   
 </head>
 <body>
@@ -45,7 +45,7 @@ if (isset($_SESSION['principal'])) {
     <div class="container">
       <div class="nav-content">
         <div class="logo">
-          <img src="assets/images/logo.jpg" alt="SVM Logo">
+          <img src="/SVM/assets/images/logo.jpg" alt="SVM Logo">
           <span>SVM Institute of Technology</span>
         </div>
         
@@ -218,6 +218,27 @@ if (isset($_SESSION['principal'])) {
       </div>
     </div>
   </footer>
-  <script src="script.js"></script>
+  <script src="/SVM/script.js"></script>
+  <script>
+    fetch('get_events.php')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('eventContainer');
+        if(data.length === 0) {
+          container.innerHTML = "<p>No events available at the moment.</p>";
+          return;
+        }
+        data.forEach(eventItem => {
+          const eventCard = document.createElement('div');
+          eventCard.className = 'event-card';
+          eventCard.innerHTML = `
+            <h3>${eventItem.SVM_Event}</h3>
+            <p>${eventItem.Event_date}</p>
+          `;
+          container.appendChild(eventCard);
+        });
+      })
+      .catch(error => console.error('Error fetching events:', error));  
+  </script>
 </body>
 </html>

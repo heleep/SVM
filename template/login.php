@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if ($password === $principal_password) {
           $_SESSION['principal'] = true;
           $_SESSION['principal_email'] = $email;
-          header("Location: /SVM/index.php");
+          header("Location: /SVM/template/index.php");
           exit;
       } else {
           $error = "Invalid password. Please try again.";
