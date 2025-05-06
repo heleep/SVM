@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 06, 2025 at 12:07 PM
+-- Generation Time: May 06, 2025 at 12:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -44,6 +44,48 @@ INSERT INTO `images` (`id`, `filename`, `uploaded_at`) VALUES
 (9, '680b2aad491a0_bugatti_tourbillon_hybrid_hyper_sports_car-wallpaper-3554x1999.jpg', '2025-04-25 06:24:45'),
 (10, '680b2ac1c6bb8_minecraft-forest-4k-wallpaper-uhdpaper.com-619@5@e.jpg', '2025-04-25 06:25:05');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `SVM_Events`
+--
+
+CREATE TABLE `SVM_Events` (
+  `SVM_Event` text NOT NULL,
+  `Event_description` text DEFAULT NULL,
+  `Event_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `SVM_Events`
+--
+
+INSERT INTO `SVM_Events` (`SVM_Event`, `Event_description`, `Event_date`) VALUES
+('asdf', 'asdfasdfaa asd fasf asfasfsdg hdfh gf', '0123-03-12'),
+('sdf', 'dfdsfa d asfa sd af sdf asfaa', '0112-02-12'),
+('sdf', 'dfdsfa d asfa sd af sdf asfaa', '0112-02-12'),
+('dsfafa', 'dsafa asd fa sfa sa sf', '0012-12-12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `SVM_Principal`
+--
+
+CREATE TABLE `SVM_Principal` (
+  `user_name` varchar(255) NOT NULL,
+  `user_password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `SVM_Principal`
+--
+
+INSERT INTO `SVM_Principal` (`user_name`, `user_password`) VALUES
+('admin@gmail.com', '@admin_'),
+('mayur@gmail.com', 'mayur'),
+('patel@gmail.com', '2635');
+
 --
 -- Indexes for dumped tables
 --
@@ -53,6 +95,12 @@ INSERT INTO `images` (`id`, `filename`, `uploaded_at`) VALUES
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `SVM_Principal`
+--
+ALTER TABLE `SVM_Principal`
+  ADD UNIQUE KEY `user_name` (`user_name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
