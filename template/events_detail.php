@@ -1,8 +1,7 @@
 <?php
-include './db/database_connection.php';
+include '../db/database_connection.php';
 
-$id = $_GET['id'] ?? 0;
-$id = (int)$id;
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 $stmt = $conn->prepare("SELECT * FROM SVM_Events WHERE id = ?");
 $stmt->bind_param("i", $id);
@@ -40,7 +39,7 @@ $image = !empty($event['Event_image'])
       <div class="event-description">
         <?= nl2br(htmlspecialchars($event['Event_description'])) ?>
       </div>
-      <a href="/SVM/index.php" class="back-button">⬅ Back to Home</a>
+      <a href="/SVM/index.html" class="back-button">⬅ Back to Home</a>
     </div>
   </div>
 
