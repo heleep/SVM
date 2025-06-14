@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management System</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 0;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 30px 0;
+      color: #2c3e50;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: #3498db;
+      border-radius: 2px;
+    }
+
+    .debug-panel {
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 30px 0;
+      font-family: monospace;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .debug-panel h3 {
+      color: #3498db;
+      margin-bottom: 15px;
+    }
+
+    .debug-entry {
+      padding: 10px;
+      border-bottom: 1px solid #34495e;
+    }
+
+    .debug-entry.error {
+      color: #e74c3c;
+    }
+
+    .debug-entry.success {
+      color: #2ecc71;
+    }
+
+    #eventContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .status {
+      text-align: center;
+      padding: 20px;
+      font-weight: bold;
+      color: #27ae60;
+      background: rgba(39, 174, 96, 0.1);
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .error {
+      color: #e74c3c;
+      background: rgba(231, 76, 60, 0.1);
+    }
+
+    .event-card-link {
+      display: block;
+      width: 300px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .event-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      height: 100%;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #ecf0f1;
+    }
+
+    .event-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: #3498db;
+    }
+
+    .event-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    .event-card p {
+      color: #7f8c8d;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .event-card-link:hover .event-card {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      background-color: #f8f9fa;
+    }
+
+    .event-card-link:hover .event-card::before {
+      background: #e74c3c;
+    }
+
+    .event-id {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #3498db;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .test-card {
+      background: #e8f4f8;
+      border: 1px dashed #3498db;
+    }
+
+    .test-card h3 {
+      color: #2980b9;
+    }
+
+    .debug-controls {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+
+    button#simulateError {
+      background: #e74c3c;
+    }
+
+    button#simulateError:hover {
+      background: #c0392b;
+    }
+
+    @media (max-width: 768px) {
+      #eventContainer {
+        gap: 1.5rem;
+      }
+      
+      .event-card-link {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Event Management Debugger</h1>
+      <p>Diagnosing why anchor tags aren't being added</p>
+    </header>
+
+    <section class="events">
+      <h2>Upcoming Events</h2>
+      
+      <div class="status" id="statusMessage">Loading events from database...</div>
+      
+      <div class="debug-controls">
+        <button id="reloadBtn">Reload Events</button>
+        
+      </div>
+      
+      <div id="eventContainer">
+        <!-- Events will be dynamically inserted here -->
+      </div>
+    </section>
+    
+    <section class="debug">
+      <h2>Debugging Panel</h2>
+      <div class="debug-panel" id="debugPanel">
+        <div class="debug-entry">Debugging session started...</div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Debugging tool
+    function logDebug(message, isError = false) {
+      const panel = document.getElementById('debugPanel');
+      const entry = document.createElement('div');
+      entry.className = `debug-entry ${isError ? 'error' : ''}`;
+      entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+      panel.appendChild(entry);
+      panel.scrollTop = panel.scrollHeight;
+    }
+
+    // Status updater
+    function updateStatus(message, isError = false) {
+      const status = document.getElementById('statusMessage');
+      status.textContent = message;
+      status.className = `status ${isError ? 'error' : ''}`;
+    }
+
+    // Format date
+    function formatDate(dateString) {
+      try {
+        const eventDate = new Date(dateString);
+        if (isNaN(eventDate)) {
+          throw new Error('Invalid date');
+        }
+        return eventDate.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+      } catch (e) {
+        logDebug(`Date formatting error: ${e.message} for date: ${dateString}`, true);
+        return 'Invalid date';
+      }
+    }
+
+    // Create event card
+    function createEventCard(event) {
+      const link = document.createElement('a');
+      link.href = `template/events_detail.php?id=${event.id}`;
+      link.classList.add('event-card-link');
+
+      const eventCard = document.createElement('div');
+      eventCard.classList.add('event-card');
+      
+      eventCard.innerHTML = `
+        <div class="event-id">${event.id}</div>
+        <h3>${event.SVM_Event || 'Untitled Event'}</h3>
+        <p><strong>Date:</strong> ${formatDate(event.Event_date)}</p>
+        <p>Click to view event details</p>
+      `;
+
+      link.appendChild(eventCard);
+      return link;
+    }
+
+    // Add test card for debugging
+    function addTestCard() {
+      const container = document.getElementById('eventContainer');
+      const testEvent = {
+        id: 999,
+        SVM_Event: "Test Event (Debug)",
+        Event_date: new Date().toISOString().split('T')[0]
+      };
+      
+      const testCard = createEventCard(testEvent);
+      testCard.querySelector('.event-card').classList.add('test-card');
+      container.appendChild(testCard);
+      
+      logDebug("Test card added successfully");
+      updateStatus("Test card added - Check if clickable");
+    }
+
+    // Fetch events from server
+    async function fetchEvents() {
+      const container = document.getElementById('eventContainer');
+      updateStatus("Loading events from database...");
+      logDebug("Starting event fetch...");
+      
+      try {
+        const response = await fetch('template/get_events.php');
+        
+        // Log response details
+        logDebug(`Response status: ${response.status} ${response.statusText}`);
+        
+        if (!response.ok) {
+          throw new Error(`Server returned ${response.status} ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        logDebug(`Received ${data.length} events from server`);
+        
+        if (!Array.isArray(data)) {
+          throw new Error("Response data is not an array");
+        }
+        
+        if (data.length === 0) {
+          container.innerHTML = "<p>No events available.</p>";
+          updateStatus("No upcoming events found");
+          logDebug("No events found in response");
+          return;
+        }
+        
+        // Clear container but keep test cards
+        const children = Array.from(container.children);
+        children.forEach(child => {
+          if (!child.querySelector('.test-card')) {
+            container.removeChild(child);
+          }
+        });
+        
+        data.forEach(event => {
+          // Critical check: Does the event have an ID?
+          if (!event.id) {
+            logDebug(`Event missing ID: ${JSON.stringify(event)}`, true);
+            return;
+          }
+          
+          const eventCard = createEventCard(event);
+          container.appendChild(eventCard);
+        });
+        
+        updateStatus(`Loaded ${data.length} events`);
+        logDebug(`${data.length} events rendered successfully`);
+        
+      } catch (error) {
+        console.error('Error fetching events:', error);
+        logDebug(`FETCH ERROR: ${error.message}`, true);
+        updateStatus("Error loading events. Please try again later.", true);
+      }
+    }
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      logDebug("DOM fully loaded and parsed");
+      
+      // Check if container exists
+      const container = document.getElementById('eventContainer');
+      if (!container) {
+        const errorMsg = "CRITICAL: 'eventContainer' element not found";
+        logDebug(errorMsg, true);
+        updateStatus(errorMsg, true);
+        return;
+      }
+      
+      logDebug("eventContainer found");
+      
+      // Load events
+      fetchEvents();
+      
+      // Setup event listeners
+      document.getElementById('reloadBtn').addEventListener('click', fetchEvents);
+      document.getElementById('testBtn').addEventListener('click', addTestCard);
+      document.getElementById('simulateError').addEventListener('click', function() {
+        logDebug("Simulating error...", true);
+        updateStatus("Simulated error for testing", true);
+      });
+    });
+  </script>
+</body>
+</html>

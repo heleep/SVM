@@ -7,13 +7,25 @@ if (!isset($_SESSION['admin'])) {
   exit();
 }
 
+$upload_dir = __DIR__ . '/../assets/uploads/';
+$upload_web_path = '/SVM/assets/uploads/';
+
 // Handle Add Event
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_event'])) {
   $event = $_POST['event_name'];
   $date = $_POST['event_date'];
   $description = $_POST['event_description'];
-  $stmt = $conn->prepare("INSERT INTO SVM_Events (SVM_Event, Event_date, Event_description) VALUES (?, ?, ?)");
-  $stmt->bind_param("ss", $event, $date, $description);
+
+  // Handle image upload
+  $image_name = '';
+  if (isset($_FILES['event_image']) && $_FILES['event_image']['error'] === UPLOAD_ERR_OK) {
+    $image_name = uniqid() . '_' . basename($_FILES['event_image']['name']);
+    $target_path = $upload_dir . $image_name;
+    move_uploaded_file($_FILES['event_image']['tmp_name'], $target_path);
+  }
+
+  $stmt = $conn->prepare("INSERT INTO SVM_Events (SVM_Event, Event_date, Event_description, Event_image) VALUES (?, ?, ?, ?)");
+  $stmt->bind_param("ssss", $event, $date, $description, $image_name);
   $stmt->execute();
   header("Location: manage_events.php");
   exit();
@@ -36,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_event'])) {
   $updated_date = $_POST['updated_event_date'];
   $updated_description = $_POST['updated_event_description'];
   $stmt = $conn->prepare("UPDATE SVM_Events SET SVM_Event = ?, Event_date = ?, Event_description = ? WHERE SVM_Event = ?");
-  $stmt->bind_param("sss", $updated_name, $updated_date, $updated_description, $original_name);
+  $stmt->bind_param("ssss", $updated_name, $updated_date, $updated_description, $original_name);
   $stmt->execute();
   header("Location: manage_events.php");
   exit();
@@ -119,10 +131,18 @@ $events = $conn->query("SELECT * FROM SVM_Events ORDER BY Event_date DESC");
       display: none;
     }
     .add-form input[type="text"],
-    .add-form input[type="date"] {
+    .add-form input[type="date"],
+    .add-form input[type="file"] {
       padding: 10px;
       width: calc(50% - 22px);
       margin: 0 10px 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .add-form textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
@@ -160,6 +180,10 @@ $events = $conn->query("SELECT * FROM SVM_Events ORDER BY Event_date DESC");
       border-radius: 4px;
       cursor: pointer;
     }
+    img.event-image {
+      width: 100px;
+      height: auto;
+    }
   </style>
 </head>
 <body>
@@ -175,9 +199,10 @@ $events = $conn->query("SELECT * FROM SVM_Events ORDER BY Event_date DESC");
   <div class="main-content">
     <h1>All Events</h1>
     <button class="btn-show-form" onclick="document.querySelector('.add-form').style.display='block'">Add Event</button>
-    <form class="add-form" method="POST">
+    <form class="add-form" method="POST" enctype="multipart/form-data">
       <input type="text" name="event_name" placeholder="Event Name" required>
       <input type="date" name="event_date" required>
+      <input type="file" name="event_image" accept="image/*" required>
       <textarea name="event_description" placeholder="Event Description"></textarea>
       <button type="submit" name="add_event">Add</button>
     </form>
@@ -187,6 +212,7 @@ $events = $conn->query("SELECT * FROM SVM_Events ORDER BY Event_date DESC");
         <th>Event</th>
         <th>Date</th>
         <th>Description</th>
+        <th>Image</th>
         <th>Actions</th>
       </tr>
       <?php while($event = $events->fetch_assoc()): ?>
@@ -197,8 +223,13 @@ $events = $conn->query("SELECT * FROM SVM_Events ORDER BY Event_date DESC");
             <input type="hidden" name="original_name" value="<?= htmlspecialchars($event['SVM_Event']) ?>">
           </td>
           <td><input type="date" name="updated_event_date" value="<?= htmlspecialchars($event['Event_date']) ?>" required></td>
-          <td class="event-description">
-            <textarea name="updated_event_description"><?= htmlspecialchars($event['Event_description']) ?></textarea>
+          <td><textarea name="updated_event_description"><?= htmlspecialchars($event['Event_description']) ?></textarea></td>
+          <td>
+            <?php if (!empty($event['Event_image'])): ?>
+              <img src="<?= $upload_web_path . htmlspecialchars($event['Event_image']) ?>" class="event-image" alt="Event Image">
+            <?php else: ?>
+              No Image
+            <?php endif; ?>
           </td>
           <td>
             <button type="submit" name="update_event" class="btn-update">Update</button>

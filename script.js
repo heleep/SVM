@@ -83,26 +83,126 @@ featureCards.forEach(card => {
 // Initialize Lucide icons
 // lucide.createIcons();
 
-// Fetch events from the database and display them in the event section
-fetch('template/get_events.php')
-  .then(response => response.json())
-  .then(data => {
-    const container = document.getElementById('eventContainer');
-    if(data.length === 0) {
-      container.innerHTML = "<p>No events available at the moment.</p>";
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.event-link')) {
+    console.log('✅ Event link clicked');
+  }
+});
+
+
+function updateStatus(message, isError = false) {
+  const statusElement = document.getElementById('statusMessage');
+  if (!statusElement) return;
+  
+  statusElement.textContent = message;
+  statusElement.className = isError ? 'status error' : 'status';
+}
+
+function formatDate(dateString) {
+  try {
+    const eventDate = new Date(dateString);
+    if (isNaN(eventDate)) {
+      throw new Error('Invalid date');
+    }
+    return eventDate.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  } catch (e) {
+    console.error('Date formatting error:', e);
+    return 'Invalid date';
+  }
+}
+
+// CORRECTED createEventCard function
+function createEventCard(event) {
+  if (!event?.id || !event.SVM_Event || !event.Event_date) {
+    console.warn("Incomplete event data", event);
+    return null;
+  }
+
+  const link = document.createElement('a');
+  link.href = `template/events_detail.php?id=${event.id}`;
+  link.classList.add('event-card-link');
+
+  const card = document.createElement('div');
+  card.className = 'event-card';
+  card.innerHTML = `
+    <div class="event-id">${event.id}</div>
+    <h3>${event.SVM_Event}</h3>
+    <p><strong>Date:</strong> ${formatDate(event.Event_date)}</p>
+    <p>Click to view event details</p>
+  `;
+  link.appendChild(card);
+  return link;
+}
+
+function addTestCard() {
+  const container = document.getElementById('eventContainer');
+  if (!container) return;
+  
+  const testEvent = {
+    id: 999,
+    SVM_Event: "Test Event (Debug)",
+    Event_date: new Date().toISOString().split('T')[0]
+  };
+  
+  const testCard = createEventCard(testEvent);
+  testCard.querySelector('.event-card').classList.add('test-card');
+  container.appendChild(testCard);
+  
+  updateStatus("Test card added - Check if clickable");
+}
+
+async function fetchEvents() {
+  const container = document.getElementById('eventContainer');
+  if (!container) {
+    console.error("Event container not found");
+    return;
+  }
+  
+  updateStatus("Loading events from database...");
+  
+  try {
+    const response = await fetch('template/get_events.php');
+    
+    if (!response.ok) {
+      throw new Error(`Server returned ${response.status} ${response.statusText}`);
+    }
+    
+    const data = await response.json();
+    console.log("Fetched events data:", data); // For debugging
+    
+    if (!Array.isArray(data)) {
+      throw new Error("Response data is not an array");
+    }
+    
+    // Clear container
+    container.innerHTML = '';
+    
+    if (data.length === 0) {
+      updateStatus("No upcoming events found");
       return;
     }
-    data.forEach(eventItem => {
-      const eventCard = document.createElement('div');
-      eventCard.className = 'event-card';
-      eventCard.innerHTML = `
-        <h3>${eventItem.SVM_Event}</h3>
-        <p>${eventItem.Event_date}</p>
-      `;
-      container.appendChild(eventCard);
+    
+    data.forEach(event => {
+      if (!event.id) {
+        console.error('Event missing ID:', event);
+        return;
+      }
+      
+      const eventCardElement = createEventCard(event);
+      container.appendChild(eventCardElement);
     });
-  })
-  .catch(error => console.error('Error fetching events:', error));
+    
+    updateStatus(`Loaded ${data.length} events`);
+    
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    updateStatus("Error loading events. Please try again later.", true);
+  }
+}
 
 // Highlight active navigation link
 document.addEventListener('DOMContentLoaded', function() {
@@ -118,4 +218,26 @@ document.addEventListener('DOMContentLoaded', function() {
       link.classList.remove('active');
     }
   });
+
+  // Add event listeners
+  document.getElementById('reloadBtn')?.addEventListener('click', fetchEvents);
+  document.getElementById('testBtn')?.addEventListener('click', addTestCard);
+  
+  // Add simulate error button if needed
+  document.getElementById('simulateError')?.addEventListener('click', function() {
+    updateStatus("Simulated error for testing", true);
+  });
+  
+  // Fetch events only if event container exists
+  if (document.getElementById('eventContainer')) {
+    fetchEvents();
+  }
 });
+
+const debounce = (func, wait) => {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+};

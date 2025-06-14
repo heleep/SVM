@@ -144,11 +144,19 @@
   <section class="events">
     <div class="container">
       <h2>Upcoming Events</h2>
+      <div class="status" id="statusMessage">Loading events...</div>
+      
+      <div class="debug-controls">
+        <button id="reloadBtn">Reload Events</button>
+        <button id="testBtn">Add Test Card</button>
+      </div>
+      
       <div id="eventContainer">
-        <!-- Events from the database will be loaded here -->
+        <!-- Event cards will appear here -->
       </div>
     </div>
   </section>
+
 
   <footer>
     <div class="container">
