@@ -50,7 +50,7 @@ if (isset($_SESSION['principal'])) {
         </div>
         
         <div class="nav-links">
-          <a href="index.php" class="nav-link active">Home</a>
+          <a href="../index.php" class="nav-link active">Home</a>
           <a href="/template/About.html" class="nav-link">About</a>
           <div class="dropdown">
             <a href="#" class="nav-link">Academics</a>
